@@ -1,0 +1,130 @@
+<section>
+  <div class="form-block">
+    <h2>Tạo form</h2>
+    <div class="row">
+      <div class="col">
+        <span>Tên trường</span>
+        <dx-text-box
+          [(value)]="name"
+          placeholder="Tên trường"
+          type="text"
+        ></dx-text-box>
+      </div>
+      <div class="col">
+        <span>Kiểu dữ liệu</span>
+        <dx-select-box [(value)]="type" [dataSource]="types"> </dx-select-box>
+      </div>
+      <div class="col">
+        <span>Trường cha</span>
+        <dx-select-box [(value)]="parent" [dataSource]="parents">
+        </dx-select-box>
+      </div>
+    </div>
+    <div class="row" style="margin-top: 20px; justify-content: center">
+      <button (click)="revese()">Quay lại</button>
+      <button (click)="addNew()">Thêm</button>
+    </div>
+  </div>
+  <div class="btn-bot">
+    <button style="margin-top: 20px" (click)="clearTable()">Xóa bảng</button>
+    <button style="margin-top: 20px" (click)="importFromApi()">
+      Import từ api
+    </button>
+  </div>
+  <div class="form-block">
+    <h2>Preview</h2>
+    <!-- <table
+        #groupingTable
+        nzBordered
+        nzSize="middle"
+        nzTemplateMode="true"
+        style="border-radius: 10px"
+      >
+        <thead>
+          <tr *ngIf="table.length === 0 || table[0].colums.length === 0">
+            <th
+              style="background-color: #ccdbeb; color: black; text-align: center"
+            >
+              Header of table
+            </th>
+          </tr>
+          <tr *ngFor="let row of table">
+            <th
+              *ngFor="let colum of row.colums"
+              rowSpan="{{ colum.rowSpan }}"
+              colSpan="{{ colum.colSpan }}"
+              style="background-color: #ccdbeb; color: black; text-align: center"
+            >
+              {{ colum.content }}
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td
+              *ngIf="table.length === 0 || table[0].colums.length === 0"
+              style="text-align: center"
+            >
+              Contents of table
+            </td>
+            <td *ngFor="let content of contents" style="text-align: center">
+              {{ content }}
+            </td>
+          </tr>
+        </tbody>
+      </table> -->
+    <dxo-export [enabled]="true" [formats]="['xlsx', 'pdf']"> </dxo-export>
+    <dx-data-grid
+      [dataSource]="jsons"
+      style="background-color: #ccdbeb; color: black; text-align: center"
+      (onExporting)="exportGrid($event)"
+    >
+      <dxi-column
+        *ngFor="let json of jsons"
+        dataField="{{ json.key }}"
+        caption="{{ json.key }}"
+        style="background-color: #ccdbeb; color: black; text-align: center"
+      >
+        <dxi-column
+          *ngFor="let json2 of json.children"
+          dataField="{{ json2.key }}"
+          caption="{{ json2.key }}"
+          style="background-color: #ccdbeb; color: black; text-align: center"
+        >
+          <dxi-column
+            *ngFor="let json3 of json2.children"
+            dataField="{{ json3.key }}"
+            caption="{{ json3.key }}"
+            style="background-color: #ccdbeb; color: black; text-align: center"
+          >
+            <dxi-column
+              *ngFor="let json4 of json3.children"
+              dataField="{{ json4.key }}"
+              caption="{{ json4.key }}"
+              style="
+                background-color: #ccdbeb;
+                color: black;
+                text-align: center;
+              "
+            >
+              <dxi-column
+                *ngFor="let json5 of json4.children"
+                dataField="{{ json5.key }}"
+                caption="{{ json5.key }}"
+                style="
+                  background-color: #ccdbeb;
+                  color: black;
+                  text-align: center;
+                "
+              >
+              </dxi-column>
+            </dxi-column>
+          </dxi-column>
+        </dxi-column>
+      </dxi-column>
+    </dx-data-grid>
+  </div>
+  <div class="btn-bot">
+    <button style="margin-top: 20px" (click)="save()">Lưu</button>
+  </div>
+</section>

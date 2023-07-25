@@ -1,0 +1,79 @@
+<section>
+  <h2>Record Grouping</h2>
+  <br />
+  <dx-data-grid
+    id="gridContainer"
+    [dataSource]="dataSource"
+    keyExpr="ID"
+    [showBorders]="true"
+    [allowColumnReordering]="false"
+    [allowColumnResizing]="false"
+    [remoteOperations]="{ paging: true }"
+    [paging]="{ pageSize: 50 }"
+    (onOptionChanged)="loadData($event)"
+  >
+    <ng-container *ngFor="let column of keyColumn">
+      <dxi-column [dataField]="column" alignment="center"></dxi-column>
+    </ng-container>
+    <!-- <dxi-column dataField="CompanyName"></dxi-column>
+    <dxi-column dataField="Phone"></dxi-column>
+    <dxi-column dataField="Fax"></dxi-column>
+    <dxi-column dataField="City"></dxi-column>
+    <dxi-column dataField="State" [groupIndex]="0"></dxi-column> -->
+
+    <dxo-search-panel
+      (textChange)="log(searchText)"
+      [width]="300"
+      placeholder="Tìm kiếm ..."
+      [(text)]="searchText"
+      [visible]="true"
+    ></dxo-search-panel>
+    <dxo-paging [pageSize]="10"></dxo-paging>
+    <dxo-group-panel [visible]="true"></dxo-group-panel>
+    <dxo-grouping #expand [autoExpandAll]="true"></dxo-grouping>
+  </dx-data-grid>
+  <div class="options">
+    <div class="caption">Options</div>
+    <div class="option">
+      <dx-check-box id="autoExpand" text="Expand All Groups"> </dx-check-box>
+    </div>
+  </div>
+  <br />
+  <br />
+  <h2>Remote Grouping</h2>
+  <br />
+  <dx-data-grid
+    id="gridContainer"
+    [dataSource]="customers"
+    keyExpr="ID"
+    [allowColumnReordering]="true"
+    [showBorders]="true"
+    (onOptionChanged)="event($event)"
+  >
+    <!-- <dxo-sorting mode="none"></dxo-sorting> -->
+    <dxo-header-filter [visible]="showHeaderFilter"></dxo-header-filter>
+    <dxo-filter-row
+      [visible]="showFilterRow"
+      applyFilter="onClick"
+    ></dxo-filter-row>
+    <dxi-column
+      dataField="CompanyName"
+      (filterValueChange)="onFilterValueChange($event)"
+    ></dxi-column>
+    <dxi-column dataField="Phone"></dxi-column>
+    <dxi-column dataField="Fax"></dxi-column>
+    <dxi-column dataField="City"></dxi-column>
+    <dxi-column dataField="State"></dxi-column>
+
+    <dxo-search-panel [visible]="true"></dxo-search-panel>
+    <dxo-paging [pageSize]="10"></dxo-paging>
+    <dxo-group-panel [visible]="true"></dxo-group-panel>
+    <dxo-grouping #expand [autoExpandAll]="true"></dxo-grouping>
+  </dx-data-grid>
+  <div class="options">
+    <div class="caption">Options</div>
+    <div class="option">
+      <dx-check-box id="autoExpand" text="Expand All Groups"> </dx-check-box>
+    </div>
+  </div>
+</section>

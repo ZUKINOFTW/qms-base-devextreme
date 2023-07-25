@@ -1,1 +1,106 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+  margin: 0px;
+  padding: 0px;
+  font-family: Inter;
+}
+
+*::-webkit-scrollbar {
+  width: 5px;
+}
+
+*::-webkit-scrollbar-track {
+  background-color: white;
+  border-radius: 100px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #d2d2d2;
+  border-radius: 100px;
+}
+
+body {
+  -moz-user-select: none !important;
+  -webkit-touch-callout: none !important;
+  -webkit-user-select: none !important;
+  -khtml-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+}
+
+/* Style FaceNet button */
+.fn-button {
+  height: 42px;
+  border: none;
+  padding: 10px 12px;
+  font-size: 18px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.fn-button-solid {
+  height: 42px;
+  border: none;
+  padding: 10px 12px;
+  font-size: 18px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  background-color: #ff7a00;
+  color: white;
+}
+
+.fn-button-thin {
+  height: 42px;
+  border: none;
+  padding: 10px 12px;
+  font-size: 18px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  background-color: transparent;
+  color: #ff7a00;
+}
+
+/* Style FaceNet input */
+
+.fn-input {
+  display: flex;
+  height: 39;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  padding: 10px 8px;
+  align-items: flex-end;
+  gap: 80px;
+  border-radius: 3px;
+  background: #fff;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.fn-input:focus {
+  border-color: #ff7a00 !important;
+}
+
+/* Style FaceNet label */
+
+.fn-label {
+  color: rgba(0, 0, 0, 0.7);
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
